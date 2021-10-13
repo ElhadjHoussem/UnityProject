@@ -8,6 +8,7 @@ public class Recognition : MonoBehaviour
 {
 
     private ModelConfig ConfigGesture = new ModelConfig(
+        "Gesture",
         320,//image width
         120,// image Height
         "conv2d_1_input", //input layer Name
@@ -16,6 +17,7 @@ public class Recognition : MonoBehaviour
         );
 
     private ModelConfig ConfigEmotion = new ModelConfig(
+        "Emotion",
         64,//image width
         64,// image Height
         "Input3",//input layer Name

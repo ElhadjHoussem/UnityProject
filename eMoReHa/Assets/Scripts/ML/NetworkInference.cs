@@ -1,22 +1,31 @@
 ﻿using UnityEngine;
 using Unity.Barracuda;
+using System.Collections.Generic;
 
-
-public class NetworkInference
+public class NetworkInference:MonoBehaviour
 {
-    public NNModel modelAsset;
-    private Model nn_RuntimeModel;
-    private IWorker worker;
+    public List<NNModel> modelAssets=new List<NNModel>();
+    private List<Model> nn_RuntimeModels = new List<Model>();
+    private List<IWorker> workers = new List<IWorker>();
 
     void Start()
     {
-        nn_RuntimeModel = ModelLoader.Load(modelAsset);
-        worker = WorkerFactory.CreateWorker(WorkerFactory.Type.ComputePrecompiled, nn_RuntimeModel);
+        for (int i = 0; i < modelAssets.Count; i++)
+        {
+            nn_RuntimeModels.Add(ModelLoader.Load(modelAssets[i]));
+            workers.Add(WorkerFactory.CreateWorker(WorkerFactory.Type.ComputePrecompiled, nn_RuntimeModels[i]));
+        }
+  
+
 
     }
 
-    public IWorker getWorker()
+    public List<IWorker> getWorkers()
     {
-        return worker;
+        return workers;
+    }
+    public int CountModels()
+    {
+        return modelAssets.Count;
     }
 }

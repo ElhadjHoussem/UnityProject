@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class WebcamFeed : MonoBehaviour
 {
     public int _Device = 0;
-    // Start is called before the first frame update
     public RawImage _Display;
     WebCamTexture _WebCamTexture;
     AspectRatioFitter _Fitter;
