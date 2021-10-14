@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ModelConfig 
+public struct ModelConfig 
 {
     private string Name;
     private int ImageWidth;

@@ -4,9 +4,7 @@ using Unity.Barracuda;
 using UnityEngine.UI;
 using System.Linq;
 using System.Collections;
-using UnityEngine.Events;
-using UnityEngine.Rendering;
-using System;
+
 
 public class Detector : MonoBehaviour
 {
@@ -47,19 +45,22 @@ public class Detector : MonoBehaviour
     #endregion private fields
 
 
+
+
     // Start is called before the first frame update
+
     void Start()
     {
+
         _webCamTextures = new WebCamTexture[webcamFeed.CountDisplays()];
         _modelConfigs = new ModelConfig[] { _ConfigEmotion, _ConfigGesture };
-        _workers = nnInference.getWorkers();
 
+        _workers = nnInference.getWorkers();
     }
 
     // Update is called once per frame
     void Update()
     {
-
 
         for (int i = 0; i < webcamFeed.CountDisplays(); i++)
         {
@@ -120,5 +121,6 @@ public class Detector : MonoBehaviour
             _workers[i]?.Dispose();
 
         }
+
     }
 }
