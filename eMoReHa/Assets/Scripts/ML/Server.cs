@@ -26,7 +26,8 @@ public class Server : MonoBehaviour
     120,// image Height
     "conv2d_1_input", //input layer Name
     "dense_2", // output layer Name
-    new List<string>() { "down", "palm", "l", "fist", "fist_moved", "thumb", "index", "ok", "palm_moved", "c" }// labels dict
+    new List<string>() { "down", "palm", "l", "fist", "fist_moved", "thumb", "index", "ok", "palm_moved", "c" },// labels dict
+    1
     );
 
     private ModelConfig _ConfigEmotion = new ModelConfig(
@@ -35,7 +36,8 @@ public class Server : MonoBehaviour
         64,// image Height
         "Input3",//input layer Name
         "Plus692_Output_0",// output layer Name
-        new List<string>() { "neutral", "happiness", "surprise", "sadness", "anger", "disgust", "fear", "contempt" }// label dict
+        new List<string>() { "neutral", "happiness", "surprise", "sadness", "anger", "disgust", "fear", "contempt" },// label dict
+        255
         );
     #endregion Models Configuration
 
@@ -54,15 +56,15 @@ public class Server : MonoBehaviour
     {
 
         _webCamTextures = new WebCamTexture[webcamFeed.CountDisplays()];
-        _modelConfigs = new ModelConfig[] { _ConfigEmotion, _ConfigGesture };
         _preprocessors = new Preprocessing[nnInference.CountModels()];
-        _workers = nnInference.getWorkers();
+        _modelConfigs = new ModelConfig[nnInference.CountModels()];
+        _workers = nnInference.GetWorkers();
     }
 
     void Start()
     {
         _preprocessors = Enumerable.Range(0, nnInference.CountModels()).Select(i => new Preprocessing(i)).ToArray();
-
+        _modelConfigs = Enumerable.Range(0, nnInference.CountModels()).Select(i => nnInference.GetModelConfig(nnInference.modelNames[i])).ToArray();
     }
 
 
@@ -124,12 +126,11 @@ public class Server : MonoBehaviour
     }
     Tensor TransformInput(byte[] pixels,int model_index)
     {
-        print(model_index + "  " + _modelConfigs[model_index].getName());
         float[] singleChannel = new float[_modelConfigs[model_index].getImageWidth() * _modelConfigs[model_index].getImageHeight()];
         for (int i = 0; i < singleChannel.Length; i++)
         {
             Color color = new Color32(pixels[i * 3 + 0], pixels[i * 3 + 1], pixels[i * 3 + 2], 255);
-            singleChannel[i] = color.grayscale * color_transform[model_index];
+            singleChannel[i] = color.grayscale * _modelConfigs[model_index].getColorTransform();
         }
         return new Tensor(1, _modelConfigs[model_index].getImageWidth(), _modelConfigs[model_index].getImageHeight(), 1, singleChannel);
     }

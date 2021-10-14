@@ -4,45 +4,51 @@ using System.Collections.Generic;
 
 public struct ModelConfig 
 {
-    private string Name;
-    private int ImageWidth;
-    private int ImageHeight;
-    private string InputName;
-    private string OutputName;
-    private List<string> OutputLabels;
+    private string _name;
+    private int _imageWidth;
+    private int _imageHeight;
+    private int _colorTransform;
+    private string _inputName;
+    private string _iutputName;
+    private List<string> _outputLabels;
 
-    public ModelConfig(string name,int imageWidth, int imageHeight, string inputName, string outputName, List<string> labels)
+    public ModelConfig(string name,int imageWidth, int imageHeight, string inputName, string outputName, List<string> labels,int colorTransform)
     {
-        Name = name;
-        ImageWidth = imageWidth;
-        ImageHeight = imageHeight;
-        InputName = inputName;
-        OutputName = outputName;
-        OutputLabels = labels;
+        _name = name;
+        _imageWidth = imageWidth;
+        _imageHeight = imageHeight;
+        _inputName = inputName;
+        _iutputName = outputName;
+        _outputLabels = labels;
+        _colorTransform = colorTransform;
 
     }
     public string getName()
     {
-        return Name;
+        return _name;
     }
     public int getImageWidth()
     {
-        return ImageWidth;
+        return _imageWidth;
     }
     public int getImageHeight()
     {
-        return ImageHeight;
+        return _imageHeight;
+    }
+    public int getColorTransform()
+    {
+        return _colorTransform;
     }
     public string getInputName()
     {
-        return InputName;
+        return _inputName;
     }
     public string getOutputName()
     {
-        return OutputName;
+        return _iutputName;
     }
     public List<string> getLabels()
     {
-        return OutputLabels;
+        return _outputLabels;
     }
 }

@@ -23,7 +23,8 @@ public class Detector : MonoBehaviour
     120,// image Height
     "conv2d_1_input", //input layer Name
     "dense_2", // output layer Name
-    new List<string>() { "down", "palm", "l", "fist", "fist_moved", "thumb", "index", "ok", "palm_moved", "c" }// labels dict
+    new List<string>() { "down", "palm", "l", "fist", "fist_moved", "thumb", "index", "ok", "palm_moved", "c" },// labels dict
+    1 //color transform
     );
 
     private ModelConfig _ConfigEmotion = new ModelConfig(
@@ -32,7 +33,8 @@ public class Detector : MonoBehaviour
         64,// image Height
         "Input3",//input layer Name
         "Plus692_Output_0",// output layer Name
-        new List<string>() { "neutral", "happiness", "surprise", "sadness", "anger", "disgust", "fear", "contempt" }// label dict
+        new List<string>() { "neutral", "happiness", "surprise", "sadness", "anger", "disgust", "fear", "contempt" },// label dict
+        255//color transform
         );
     #endregion Models Configuration
 
@@ -55,7 +57,7 @@ public class Detector : MonoBehaviour
         _webCamTextures = new WebCamTexture[webcamFeed.CountDisplays()];
         _modelConfigs = new ModelConfig[] { _ConfigEmotion, _ConfigGesture };
 
-        _workers = nnInference.getWorkers();
+        _workers = nnInference.GetWorkers();
     }
 
     // Update is called once per frame

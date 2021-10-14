@@ -403,6 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6dcb0f31cb2ac489d5b126b696ecc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelNames:
+  - Emotion
+  - Gesture
   modelAssets:
   - {fileID: 5022602860645237092, guid: 3640bef0739b5de469cc2b4eb32addc6, type: 3}
   - {fileID: 5022602860645237092, guid: 687e321713bdb064a824018a38d75862, type: 3}
@@ -485,7 +488,7 @@ GameObject:
   - component: {fileID: 1000492524}
   - component: {fileID: 1000492527}
   m_Layer: 5
-  m_Name: WebCamFeed_1
+  m_Name: Display_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -905,7 +908,7 @@ GameObject:
   - component: {fileID: 2094942221}
   - component: {fileID: 2094942224}
   m_Layer: 5
-  m_Name: WebCamFeed_2
+  m_Name: Display_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
