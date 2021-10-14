@@ -13,7 +13,7 @@ public class Server : MonoBehaviour
 {
 
     #region public fields
-    public WebCamFeed1 webcamFeed;
+    public WebCamFeed webcamFeed;
     public List<Text> uiText;
     public NetworkInference nnInference;
     #endregion public
