@@ -19,28 +19,6 @@ public class Server : MonoBehaviour
     #endregion public
 
 
-    #region Models Configuration
-    private ModelConfig _ConfigGesture = new ModelConfig(
-    "Gesture",
-    320,//image width
-    120,// image Height
-    "conv2d_1_input", //input layer Name
-    "dense_2", // output layer Name
-    new List<string>() { "down", "palm", "l", "fist", "fist_moved", "thumb", "index", "ok", "palm_moved", "c" },// labels dict
-    1
-    );
-
-    private ModelConfig _ConfigEmotion = new ModelConfig(
-        "Emotion",
-        64,//image width
-        64,// image Height
-        "Input3",//input layer Name
-        "Plus692_Output_0",// output layer Name
-        new List<string>() { "neutral", "happiness", "surprise", "sadness", "anger", "disgust", "fear", "contempt" },// label dict
-        255
-        );
-    #endregion Models Configuration
-
     #region private fields
     public Preprocessing[] _preprocessors;
     private WebCamTexture[] _webCamTextures;

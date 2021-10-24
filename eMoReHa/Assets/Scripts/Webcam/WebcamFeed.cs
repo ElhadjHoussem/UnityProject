@@ -39,8 +39,8 @@ public class WebCamFeed : MonoBehaviour
     {
         string WebCamName = WebCamTexture.devices[_Device].name;
         _WebCamTexture = new WebCamTexture(WebCamName, Screen.width, Screen.height, 30);
-        _WebCamTexture.Play();
 
+        _WebCamTexture.Play();
         Display();
 
 
@@ -70,11 +70,7 @@ public class WebCamFeed : MonoBehaviour
         }
 
     }
-    private void Play()
-    {
-        _WebCamTexture.Play();
-        print(_Displays[0].texture);
-    }
+
     public WebCamTexture GetCamImage(int i)
     {
         return (WebCamTexture) _Displays[i].texture;

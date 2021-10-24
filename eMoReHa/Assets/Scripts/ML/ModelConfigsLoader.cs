@@ -12,8 +12,8 @@ public class ModelConfigsLoader
     {
         ModelConfig _ConfigGesture = new ModelConfig(
         "Gesture",
-        320,//image width
-        120,// image Height
+        320,//inut width
+        120,// inut Height
         "conv2d_1_input", //input layer Name
         "dense_2", // output layer Name
         new List<string>() { "down", "palm", "l", "fist", "fist_moved", "thumb", "index", "ok", "palm_moved", "c" },// labels dict
@@ -22,8 +22,8 @@ public class ModelConfigsLoader
         
         ModelConfig _ConfigEmotion = new ModelConfig(
         "Emotion",
-        64,//image width
-        64,// image Height
+        64,//inut width
+        64,// inut Height
         "Input3",//input layer Name
         "Plus692_Output_0",// output layer Name
         new List<string>() { "neutral", "happiness", "surprise", "sadness", "anger", "disgust", "fear", "contempt" },// label dict
